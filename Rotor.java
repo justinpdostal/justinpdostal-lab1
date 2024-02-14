@@ -1,5 +1,12 @@
 public class Rotor {
 
+    public static void main(String args[]){
+        
+        Rotor tester = new Rotor("helloWorld*",'h');
+        tester.rotate();
+        System.out.println(tester.toString());
+        
+    }
     
     private String rotorValues;
     private char startChar;
@@ -13,17 +20,25 @@ public class Rotor {
     }
     
     public boolean rotate(){
-        //TODO
-               
+        String newString = "";
+        newString += this.rotorValues.charAt(this.rotorValues.length()-1);
+        for (int i = 0; i < this.rotorValues.length()-1; i++) {newString += this.rotorValues.charAt(i);}
+        rotorValues = newString;
+        if(rotorValues.charAt(0) == this.startChar) return true;
+        else return false;
     }
     
 
     public int indexOf(char c){
-        //TODO
+        return this.rotorValues.indexOf(c);
     }
 
     public char charAt(int idx){
-        //TODO
+        return  this.rotorValues.charAt(idx);
+    }
+
+    public String toString(){
+        return this.rotorValues;
     }
 }
     

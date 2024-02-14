@@ -19,14 +19,41 @@ public class Enigma{
     }
 
 
-    public String decrypt(String message){        
-        //TODO
+    public String encrypt(String message){ 
+        char[] newString = message.toCharArray();
+        int num;
+        char charVal;
+        for(int i =0; i < message.length(); i++){
+            num = rotors[0].indexOf(newString[i]);
+            charVal = rotors[2].charAt(num);
+            num = rotors[1].indexOf(charVal);
+            newString[i] = rotors[2].charAt(num);
+            this.rotate();
+        }
+        return new String(newString);
+        
     }
 
 
     
-    public String encrypt(String message){
-        //TODO
+    public String decrypt(String message){
+        char[] newString = message.toCharArray();
+        int num;
+        char charVal;
+
+        for(int i = 0; i < message.length();i++){
+            num = rotors[2].indexOf(newString[i]);
+            charVal = rotors[1].charAt(num);
+            num = rotors[2].indexOf(charVal);
+            newString[i] = rotors[0].charAt(num);
+            rotate();
+
+        }
+
+        return new String(newString);
+        
+        
+    }
 
     
     private void rotate(){
